@@ -6,7 +6,7 @@ import Bar from './bar.jsx';
 import styles from '../scss/bar-chart-range-selector.scss';
 
 
-class BarChartRangeSelector extends React.Component {
+export default class BarChartRangeSelector extends React.Component {
 
   static propTypes = {
     data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
