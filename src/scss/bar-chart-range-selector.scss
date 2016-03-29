@@ -1,0 +1,44 @@
+svg.chart {
+  overflow: visible;
+}
+
+.hide {
+  display: none;
+}
+
+.range-labels {
+  font-size: 0.8rem;
+}
+
+.background {
+  fill: #eee;
+}
+
+.axis {
+  font: 10px sans-serif;
+
+  path,
+  line {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.9);
+    shape-rendering: crispEdges;
+  }
+}
+
+.brush {
+  :global {
+    .extent {
+      fill: white;
+      shape-rendering: crispEdges;
+      stroke: rgba(128, 128, 128, 0.3);
+      stroke-width: 1px;
+      z-index: 2;
+    }
+  }
+}
+
+.tick {
+  text {
+    font-size: 0.7rem;
+  }
+}
