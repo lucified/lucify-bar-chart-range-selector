@@ -1,1 +1,5 @@
+build
+dist
+temp/
+.awspublish*
 node_modules/
