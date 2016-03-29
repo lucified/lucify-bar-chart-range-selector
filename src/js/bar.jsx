@@ -54,8 +54,6 @@ class Bar extends React.Component {
       classes += ' ' + styles.selected;
     }
 
-    debugger;
-
     return (
       <rect
         ref='bar'
