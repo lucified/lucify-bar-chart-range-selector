@@ -1,15 +1,18 @@
 
-import BarChartRangeSelector from './bar-chart-range-selector.jsx';
+import BarChartRangeSelector from './bar-chart-range-selector.js';
 import React from 'react';
 
 
-class Example extends React.Component {
+export default class Example extends React.Component {
 
   render() {
     return (
       <div>
         <h3>Example of bar chart range selector</h3>
-        <BarChartRangeSelector data={this.getData()} width={800} initialSelectedRange={[2, 5]} />
+        <BarChartRangeSelector
+          data={this.getData()}
+          width={800}
+          initialSelectedRange={[2, 5]} />
       </div>
     );
   }
@@ -416,6 +419,4 @@ class Example extends React.Component {
   }
 
 }
-
-module.exports = Example;
 

@@ -1,9 +1,9 @@
 
 import React from 'react';
 import d3 from 'd3';
-import Bar from './bar.jsx';
+import Bar from './bar';
 
-import styles from '../scss/bar-chart-range-selector.scss';
+import styles from '../../assets/scss/bar-chart-range-selector.scss';
 
 
 export default class BarChartRangeSelector extends React.Component {
@@ -423,9 +423,7 @@ export default class BarChartRangeSelector extends React.Component {
       </svg>
     );
   }
-
 }
 
-BarChartRangeSelector.prototype.displayName = 'BarChartRangeSelector';
 
-export default BarChartRangeSelector;
+BarChartRangeSelector.prototype.displayName = 'BarChartRangeSelector';

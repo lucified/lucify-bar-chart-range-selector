@@ -1,8 +1,7 @@
 
 import React from 'react';
 import d3 from 'd3';
-import styles from '../scss/bar.scss';
-
+import styles from '../../assets/scss/bar.scss';
 
 export default class Bar extends React.Component {
 
@@ -67,4 +66,3 @@ export default class Bar extends React.Component {
 
 
 Bar.prototype.displayName = 'Bar';
-
