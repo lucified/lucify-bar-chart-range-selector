@@ -7,6 +7,63 @@ This is a pre-release of a package belonging to the Lucify platform. It has been
 published to satisfy dependencies of other packages. Any APIs may change without
 notice.
 
+## Installation
+
+Add `lucify-bar-chart-range-selector` along with its dependencies (react and d3)
+to your project's dependencies:
+
+```shell
+$ npm i react d3 lucify-bar-chart-range-selector --save
+```
+
+Require it in your Javascript:
+
+```javascript
+var LucifyBarChartRangeSelector = require('lucify-bar-chart-range-selector');
+```
+
+Now you can use it like any other React component.
+
+## Props
+
+TODO: explain these
+
+- **data**: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+- **initialSelectedRange**: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+- **height**: React.PropTypes.number.isRequired,
+- **width**: React.PropTypes.number.isRequired,
+- **margin**: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
+- **customColors**: React.PropTypes.arrayOf(React.PropTypes.array),
+- **onChange**: React.PropTypes.func,
+- **xTickFormat**: React.PropTypes.func.isRequired,
+- **yTickFormat**: React.PropTypes.func.isRequired,
+- **xTickValues**: React.PropTypes.array,
+- **rangeFormat**: React.PropTypes.func.isRequired,
+- **onMouseOver**: React.PropTypes.func,
+- **onMouseLeave**: React.PropTypes.func
+
+## Development
+
+Build the Javascript files into `lib/` with:
+
+```shell
+$ npm run build
+```
+
+Or build the development versions and start the guard with:
+
+```shell
+$ npm run dev
+```
+
+To serve the example page on port 3000 and see changes live, start Gulp:
+
+```shell
+$ gulp
+```
+
+Then point your browser to http://localhost:3000/
+
 ## Developing as part of a project
 
 To develop this component in tandem with a parent project using `npm link`,

@@ -5,14 +5,27 @@ import React from 'react';
 
 export default class Example extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTimeRange: [619, 622]
+    };
+  }
+
+  handleTimeRangeChange(range) {
+    this.setState({selectedTimeRange: range});
+  }
+
   render() {
     return (
       <div>
         <h3>Example of bar chart range selector</h3>
         <BarChartRangeSelector
+          onChange={this.handleTimeRangeChange.bind(this)}
           data={this.getData()}
           width={800}
-          initialSelectedRange={[2, 5]} />
+          selectedTimeRange={this.state.selectedTimeRange}
+          initialSelectedRange={this.state.selectedTimeRange} />
       </div>
     );
   }
@@ -394,7 +407,7 @@ export default class Example extends React.Component {
         'total': 81
       },
       {
-        'key': '66',
+        'key': '623',
         'values': [
           {
             'key': 'Foo',
@@ -420,3 +433,4 @@ export default class Example extends React.Component {
 
 }
 
+Example.prototype.displayName = 'Example';
