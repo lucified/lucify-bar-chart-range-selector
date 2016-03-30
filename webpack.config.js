@@ -15,7 +15,12 @@ var config = {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: [
+          require.resolve('style-loader'),
+          require.resolve('css-loader') + '?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+          require.resolve('postcss-loader'),
+          require.resolve('sass-loader')
+        ]
       },
       {
         test: /\.(jsx|js)$/,
@@ -45,7 +50,11 @@ var config = {
   resolveLoader: {
     modulesDirectories: ['node_modules'],
     fallback: path.join(__dirname, 'node_modules')
-  }
+  },
+  postcss: [
+    require('autoprefixer'),
+    require('postcss-reporter')
+  ]
 };
 
 module.exports = config;
