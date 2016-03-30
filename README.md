@@ -3,17 +3,22 @@
 
 ##  About
 
+A stacked bar chart component that allows users to select a range of the stacked
+bars. Built using React and D3.js.
+
+![Animated GIF of component](bar-chart-range-selector.gif)
+
 This is a pre-release of a package belonging to the Lucify platform. It has been
 published to satisfy dependencies of other packages. Any APIs may change without
 notice.
 
 ## Installation
 
-Add `lucify-bar-chart-range-selector` along with its dependencies (react and d3)
-to your project's dependencies:
+Add `lucify-bar-chart-range-selector` along with its dependencies (React.js and
+D3.js) to your project's dependencies:
 
 ```shell
-$ npm i react d3 lucify-bar-chart-range-selector --save
+$ npm install react d3 lucify-bar-chart-range-selector --save
 ```
 
 Require it in your Javascript:
@@ -26,7 +31,7 @@ Now you can use it like any other React component.
 
 ## Props
 
-TODO: explain these
+[TODO: explain these]
 
 - **data**: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 - **initialSelectedRange**: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
