@@ -1,7 +1,7 @@
 
 import React from 'react';
 import d3 from 'd3';
-import Bar from './bar';
+import Bar from './bar.jsx';
 
 import styles from '../../assets/scss/bar-chart-range-selector.scss';
 

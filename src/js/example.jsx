@@ -1,5 +1,5 @@
 
-import BarChartRangeSelector from './bar-chart-range-selector.js';
+import BarChartRangeSelector from './bar-chart-range-selector.jsx';
 import React from 'react';
 
 

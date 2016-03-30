@@ -1,5 +1,6 @@
-build
-dist
+build/
+dist/
 temp/
 .awspublish*
+npm-debug.log
 node_modules/
