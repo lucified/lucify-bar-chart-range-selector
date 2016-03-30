@@ -1,6 +1,7 @@
 lib/
-node_modules/
-npm-debug.log
-temp/
 build/
 dist/
+temp/
+.awspublish*
+npm-debug.log
+node_modules/
