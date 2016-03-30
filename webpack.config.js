@@ -54,7 +54,16 @@ var config = {
   postcss: [
     require('autoprefixer'),
     require('postcss-reporter')
-  ]
+  ],
+  plugins: [
+    function() {
+      this.plugin('done', function(stats) {
+        if (stats.compilation.errors && stats.compilation.errors.length && process.argv.indexOf('--watch') == -1) {
+          console.log(stats.compilation.errors);
+          process.exit(1); // webpack doesn't exit with status code != 0 if there are errors
+        }
+      });
+    }]
 };
 
 module.exports = config;
