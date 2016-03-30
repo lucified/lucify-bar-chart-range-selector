@@ -20,19 +20,31 @@ var config = {
       {
         test: /\.(jsx|js)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'stage-0', 'react']
-        }
+        loader: 'babel-loader'
       }
     ]
   },
   externals: {
-    'react': 'React',
+    react: {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react'
+    },
     'd3': 'd3'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss']
+    extensions: ['', '.js', '.jsx', '.scss'],
+    root: [path.join(__dirname, 'build')],
+    fallback: [path.join(__dirname, 'node_modules')],
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom')
+    }
+  },
+  resolveLoader: {
+    modulesDirectories: ['node_modules'],
+    fallback: path.join(__dirname, 'node_modules')
   }
 };
 
