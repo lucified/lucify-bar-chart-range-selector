@@ -367,8 +367,14 @@ export default class BarChartRangeSelector extends React.Component {
     const yScale = this.getYScale();
     const colors = this.getColors();
     const contentWidth = this.getContentWidth();
-    let barWidth = contentWidth/data.length - 1; // padding of 1px between bars
-    if (barWidth < 4) barWidth++;                // except if bar's width < 4
+    let barWidth = contentWidth/data.length;
+    let barPadding = 0;
+
+    // padding of 1px between bars if bars are wide enough
+    if (barWidth > 4) {
+      barWidth--;
+      barPadding = 1;
+    }
 
     return data.map(d => {
       const item = {
@@ -389,7 +395,7 @@ export default class BarChartRangeSelector extends React.Component {
 
       return (
         <g key={d.key} className={styles['bar-group']}
-          transform={`translate(${xScale(d.key)},0)`}
+          transform={`translate(${xScale(d.key) + barPadding},0)`}
           onMouseOver={this.handleMouseOver.bind(this, item)}
           onMouseLeave={this.handleMouseLeave.bind(this)}>
           {bars}
