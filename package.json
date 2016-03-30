@@ -31,7 +31,7 @@
   "homepage": "https://github.com/lucified/lucify-bar-chart-range-selector#readme",
   "dependencies": {
     "d3": "^3.5.16",
-    "query-string": "^4.0.2"
+    "query-string": ">=3.0.0"
   },
   "peerDependencies": {
     "react": "~0.13.0"
