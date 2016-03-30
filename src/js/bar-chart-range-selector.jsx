@@ -338,14 +338,15 @@ export default class BarChartRangeSelector extends React.Component {
 
   getRangeLabels() {
     const range = this.getSelectedRange();
+    const xScale = this.getXScale();
+    const labelsDistance = Math.abs(xScale(range[1]) - xScale(range[0]));
 
     // Don't show range label if the endpoints are close to each other to
     // prevent overlap of labels
-    if (!this.state.brushing || (Math.abs(range[1] - range[0]) < 6)) {
+    if (!this.state.brushing || (labelsDistance < 40)) {
       return null;
     } else {
       const y = this.props.height - this.props.margin.bottom + 10;
-      const xScale = this.getXScale();
 
       return (
         <g className={styles['range-labels']}>
