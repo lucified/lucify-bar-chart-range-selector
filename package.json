@@ -1,6 +1,6 @@
 {
   "name": "lucify-bar-chart-range-selector",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "A React component that allows you to select a range of stacked bar charts",
   "main": "lib/bar-chart-range-selector.js",
   "scripts": {
