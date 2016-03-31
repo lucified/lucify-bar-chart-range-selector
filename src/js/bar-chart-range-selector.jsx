@@ -10,7 +10,7 @@ export default class BarChartRangeSelector extends React.Component {
 
   static propTypes = {
     data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-    initialSelectedRange: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+    selectedRange: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
     height: React.PropTypes.number.isRequired,
     width: React.PropTypes.number.isRequired,
     margin: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
@@ -75,6 +75,10 @@ export default class BarChartRangeSelector extends React.Component {
     if (this.props.data !== prevProps.data ||
         this.props.width !== prevProps.width) {
       this.drawAxes();
+      this.updateRangeBrush();
+    }
+
+    if (this.props.selectedRange !== prevProps.selectedRange) {
       this.updateRangeBrush();
     }
   }
@@ -200,8 +204,6 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   handleRangeChange(range) {
-    this._selectedRange = range;
-    this.updateRangeBrush();
     if (this.props.onChange) {
       this.props.onChange(range);
     }
@@ -262,7 +264,7 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   getSelectedRange() {
-    return this._selectedRange || this.props.initialSelectedRange;
+    return this.props.selectedRange;
   }
 
 

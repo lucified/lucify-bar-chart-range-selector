@@ -8,7 +8,7 @@ export default class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTimeRange: [619, 622]
+      selectedTimeRange: [617, 622]
     };
   }
 
@@ -24,8 +24,7 @@ export default class Example extends React.Component {
           onChange={this.handleTimeRangeChange.bind(this)}
           data={this.getData()}
           width={800}
-          selectedTimeRange={this.state.selectedTimeRange}
-          initialSelectedRange={this.state.selectedTimeRange} />
+          selectedRange={this.state.selectedTimeRange} />
       </div>
     );
   }

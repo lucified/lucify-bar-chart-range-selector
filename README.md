@@ -3,7 +3,8 @@
 
 ##  About
 
-A stacked bar chart component that allows users to select a range of the stacked
+A [controlled](https://facebook.github.io/react/docs/forms.html) stacked bar
+chart React component that allows users to select a range of the stacked
 bars. Built using React and D3.js.
 
 ![Animated GIF of component](bar-chart-range-selector.gif)
