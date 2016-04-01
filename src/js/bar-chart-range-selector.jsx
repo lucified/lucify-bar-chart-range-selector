@@ -370,7 +370,7 @@ export default class BarChartRangeSelector extends React.Component {
           </text>
           <text key='range-label-end' textAnchor='middle'
             transform={`translate(${xScale(range[1])},${y})`}>
-            {this.props.rangeFormat(range[1] - 1)}
+            {this.props.rangeFormat(range[1])}
           </text>
         </g>
       );
