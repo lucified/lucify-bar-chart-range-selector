@@ -175,10 +175,6 @@ export default class BarChartRangeSelector extends React.Component {
     const extent = this.brush.extent();
     let roundedExtent;
 
-    // subtract 1 because the end extent is one larger than the actual value
-    // to include the proper bar graphs in d3.brush.extent()
-    extent[1] = extent[1] - 1;
-
     // if dragging, preserve the width of the extent
     if (d3.event.mode === 'move') {
       const diff = Math.round(extent[1] - extent[0]);
@@ -210,7 +206,9 @@ export default class BarChartRangeSelector extends React.Component {
 
   handleRangeChange(range) {
     if (this.props.onChange) {
-      this.props.onChange(range);
+      // subtract 1 because the end extent is one larger than the actual value
+      // to include the proper bar graphs in d3.brush.extent()
+      this.props.onChange([range[0], range[1] - 1]);
     }
   }
 
