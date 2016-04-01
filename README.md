@@ -24,14 +24,20 @@ $ npm install react d3 lucify-bar-chart-range-selector --save
 
 Require it in your Javascript:
 
+#### ES5
 ```javascript
-var LucifyBarChartRangeSelector = require('lucify-bar-chart-range-selector');
+var LucifyBarChartRangeSelector = require('lucify-bar-chart-range-selector').default;
+```
+
+#### ES6
+```javascript
+import LucifyBarChartRangeSelector from 'lucify-bar-chart-range-selector';
 ```
 
 Now you can use it like any other React component.
 
 **Note:** this component has only been tested to work with React 0.13. It
-should work with React 0.14 as well, but we can't confirm this at this point.
+should work with React 0.14 as well, but we can't confirm it at this point.
 
 ## Props
 
