@@ -348,7 +348,8 @@ export default class BarChartRangeSelector extends React.Component {
     if (!this.state.brushing || (labelsDistance < 40)) {
       return null;
     } else {
-      const y = this.props.height - this.props.margin.bottom + 10;
+      const y = this.props.height -
+        (this.props.margin.bottom + this.props.margin.top) + 18;
 
       return (
         <g className={styles['range-labels']}>
