@@ -273,7 +273,7 @@ export default class BarChartRangeSelector extends React.Component {
       // bar chart area, which basically means going to the next boundary, i.e.
       // increase the end range by one. This needs to be converted back to the
       // "actual" range when passing the changes back to the parent component,
-      // which is done in brushed()
+      // which is done in handleRangeChange
       this.props.selectedRange[1] + 1
     ];
   }
