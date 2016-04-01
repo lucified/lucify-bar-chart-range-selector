@@ -21,7 +21,8 @@ export default class BarChartRangeSelector extends React.Component {
     xTickValues: React.PropTypes.array,
     rangeFormat: React.PropTypes.func.isRequired,
     onMouseOver: React.PropTypes.func,
-    onMouseLeave: React.PropTypes.func
+    onMouseLeave: React.PropTypes.func,
+    incompleteDataIndices: React.PropTypes.arrayOf(React.PropTypes.number)
   }
 
 
@@ -36,7 +37,8 @@ export default class BarChartRangeSelector extends React.Component {
     },
     xTickFormat: d3.format('n'),
     yTickFormat: d3.format('s'),
-    rangeFormat: d => d
+    rangeFormat: d => d,
+    incompleteDataIndices: []
   }
 
 
@@ -400,13 +402,16 @@ export default class BarChartRangeSelector extends React.Component {
         value: d.total
       };
 
+      const containsIncompleteData =
+        this.props.incompleteDataIndices.indexOf(d.key) >= 0;
+
       const bars = d.values.map(c =>
         <Bar key={`${d.key}-${c.key}`}
           width={barWidth}
           y0={c.y0}
           y1={c.y1}
           scale={yScale}
-          fill={colors(c.key)}
+          fill={containsIncompleteData ? 'url(#diagonalHatch)' : colors(c.key)}
           selected={d.key >= selectedRange[0] && d.key < selectedRange[1]} />
       );
 
@@ -433,6 +438,14 @@ export default class BarChartRangeSelector extends React.Component {
       <svg className={styles.chart}
         height={this.props.height}
         width={this.props.width}>
+        <defs>
+          <pattern id='diagonalHatch' patternUnits='userSpaceOnUse'
+            width={4} height={4}>
+            <path className='chart-missing' d='M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2'
+              stroke='rgb(0, 111, 185)'
+              strokeWidth={2} />
+          </pattern>
+        </defs>
         <g transform={`translate(${additionalLeftPadding + margin.left}, ${margin.top})`}>
           <rect className={styles.background}
             width={contentWidth} height={contentHeight} />
