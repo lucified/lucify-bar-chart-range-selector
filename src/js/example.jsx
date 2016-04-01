@@ -20,6 +20,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <h3>Example of bar chart range selector</h3>
+        <p>Selected: {this.state.selectedTimeRange[0]} to {this.state.selectedTimeRange[1]}</p>
         <BarChartRangeSelector
           onChange={this.handleTimeRangeChange.bind(this)}
           data={this.getData()}
