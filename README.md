@@ -65,7 +65,7 @@ Build the Javascript files into `lib/` with:
 $ npm run build
 ```
 
-Or build the development versions and start the guard with:
+Or build the development version and start watching for changes with:
 
 ```shell
 $ npm run dev
@@ -102,3 +102,7 @@ $ npm link react
 ```
 
 This is needed in order to prevent React from being loaded twice.
+
+Note that if you do not use Webpack to build your parent project, the
+development build will likely not work. You can build the production version
+while watching for changes by running `node_modules/.bin/webpack -p --watch`.
