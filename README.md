@@ -38,7 +38,7 @@ should work with React 0.14 as well, but we can't confirm this at this point.
 [TODO: explain these]
 
 - **data**: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-- **initialSelectedRange**: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
+- **selectedRange**: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
 - **height**: React.PropTypes.number.isRequired,
 - **width**: React.PropTypes.number.isRequired,
 - **margin**: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
