@@ -177,14 +177,15 @@ export default class BarChartRangeSelector extends React.Component {
 
     // if dragging, preserve the width of the extent
     if (d3.event.mode === 'move') {
+      const diff = Math.round(extent[1] - extent[0]);
 
-      const diff = extent[1] - extent[0];
       if (diff == 0) {
         return;
       }
 
       const d1 = Math.round(extent[1]);
       const d0 = Math.round(d1 - diff);
+
       roundedExtent = [d0, d1];
     }
 
@@ -205,7 +206,9 @@ export default class BarChartRangeSelector extends React.Component {
 
   handleRangeChange(range) {
     if (this.props.onChange) {
-      this.props.onChange(range);
+      // subtract 1 because the end extent is one larger than the actual value
+      // to include the proper bar graphs in d3.brush.extent()
+      this.props.onChange([range[0], range[1] - 1]);
     }
   }
 
@@ -264,7 +267,15 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   getSelectedRange() {
-    return this.props.selectedRange;
+    return [
+      this.props.selectedRange[0],
+      // This is an annoying hack. We need the extent to cover the whole last
+      // bar chart area, which basically means going to the next boundary, i.e.
+      // increase the end range by one. This needs to be converted back to the
+      // "actual" range when passing the changes back to the parent component,
+      // which is done in handleRangeChange
+      this.props.selectedRange[1] + 1
+    ];
   }
 
 
@@ -353,12 +364,14 @@ export default class BarChartRangeSelector extends React.Component {
 
       return (
         <g className={styles['range-labels']}>
-          {range.map((d,i) =>
-            <text key={'range-label-' + i} textAnchor='middle'
-              transform={`translate(${xScale(d)},${y})`}>
-              {this.props.rangeFormat(d)}
-            </text>
-          )}
+          <text key='range-label-start' textAnchor='middle'
+            transform={`translate(${xScale(range[0])},${y})`}>
+            {this.props.rangeFormat(range[0])}
+          </text>
+          <text key='range-label-end' textAnchor='middle'
+            transform={`translate(${xScale(range[1])},${y})`}>
+            {this.props.rangeFormat(range[1])}
+          </text>
         </g>
       );
     }
@@ -371,6 +384,7 @@ export default class BarChartRangeSelector extends React.Component {
     const yScale = this.getYScale();
     const colors = this.getColors();
     const contentWidth = this.getContentWidth();
+    const selectedRange = this.getSelectedRange();
     let barWidth = contentWidth/data.length;
     let barPadding = 0;
 
@@ -393,8 +407,7 @@ export default class BarChartRangeSelector extends React.Component {
           y1={c.y1}
           scale={yScale}
           fill={colors(c.key)}
-          selected={d.key >= this.getSelectedRange()[0] &&
-                    d.key < this.getSelectedRange()[1]} />
+          selected={d.key >= selectedRange[0] && d.key < selectedRange[1]} />
       );
 
       return (
