@@ -1,8 +1,6 @@
 
 # A selectable stacked bar chart React component
 
-##  About
-
 A [controlled](https://facebook.github.io/react/docs/forms.html) stacked bar
 chart React component that allows users to select a range of the stacked
 bars. Built using React and D3.js.
@@ -41,22 +39,74 @@ should work with React 0.14 as well, but we can't confirm it at this point.
 
 ## Props
 
-[TODO: explain these]
+- `data` _(required)_: The array of data objects. Has the following format:
 
-- **data**: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-- **selectedRange**: React.PropTypes.arrayOf(React.PropTypes.number).isRequired,
-- **height**: React.PropTypes.number.isRequired,
-- **width**: React.PropTypes.number.isRequired,
-- **margin**: React.PropTypes.objectOf(React.PropTypes.number).isRequired,
-- **customColors**: React.PropTypes.arrayOf(React.PropTypes.array),
-- **onChange**: React.PropTypes.func,
-- **xTickFormat**: React.PropTypes.func.isRequired,
-- **yTickFormat**: React.PropTypes.func.isRequired,
-- **xTickValues**: React.PropTypes.array,
-- **rangeFormat**: React.PropTypes.func.isRequired,
-- **onMouseOver**: React.PropTypes.func,
-- **onMouseLeave**: React.PropTypes.func
-- **incompleteDataIndices**: React.PropTypes.arrayOf(React.PropTypes.number)
+  ```javascript
+  [
+    {
+      key: 606, // integer index, either as a string or int. should be adjacent integers
+      total: 58, // sum of "values" fields of objects in values array
+      values: [ // each object in this array is represented by a stacked bar
+        {
+          key: "Foo",
+          values: 4
+        },
+        {
+          key: "Bar",
+          values: 30
+        },
+        {
+          key: "Baz",
+          values: 10
+        },
+        {
+          key: "Hey",
+          values: 14
+        }
+      ]
+    },
+    {
+      key: 607,
+      ...
+    },
+    ...
+  ]
+  ```
+
+- `selectedRange`: An array of two integers that denote the indices of the
+  selected range.
+- `height`: The height of the component in pixels. Default: `160`
+- `width`: The width of the component in pixels. Default: `1000`
+- `margin`: An object with `top`, `bottom`, `left` and `right` properties that
+  denote internal margins for the chart.
+  Default: `{ top: 5, right: 2, bottom: 20, left: 10 }`
+- `customColors`: An array of two-member arrays to define custom fill colors for
+  bars. The first member of each array is a string of the `key` property of the
+  bar, and the second member of the array is a string of the fill color.
+- `onChange`: The function that should be called when the selection range
+  changes. Is passed a two-member array that includes the extent of the
+  selection in based on the `key` value of the bar groups.
+- `xTickFormat`: Function that formats x axis tick labels. Is passed the `key`
+  value of the bar group. Default: `d3.format('n')`
+- `yTickFormat`: Function that formats y axis tick labels. Is passed the
+  `values` value. Default: `d3.format('s')`
+- `xTickValues`: An array of the values that should be displayed on the x axis.
+- `rangeFormat`: Function that formats the x axis labels when selecting a range.
+  Default: the identity function
+- `onMouseOver`: Function to be called when the user hovers on a bar group. Is
+  passed an object parameter that contains the `index` (key value of the group)
+  and `value` (total value of the group) properties.
+- `onMouseLeave`: Function to be called when the user no longer hovers on a bar
+  group.
+- `incompleteDataIndices`: An array of the indices of the bar groups that should
+  be displayed with a thatched pattern. Useful for indicating if some data is
+  incomplete. Default: `[]`
+
+
+## CSS classes
+
+TODO
+
 
 ## Development
 
@@ -79,6 +129,7 @@ $ gulp
 ```
 
 Then point your browser to http://localhost:3000/
+
 
 ## Developing as part of a project
 
