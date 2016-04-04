@@ -56,6 +56,7 @@ should work with React 0.14 as well, but we can't confirm it at this point.
 - **rangeFormat**: React.PropTypes.func.isRequired,
 - **onMouseOver**: React.PropTypes.func,
 - **onMouseLeave**: React.PropTypes.func
+- **className**: React.PropTypes.string,
 - **incompleteDataIndices**: React.PropTypes.arrayOf(React.PropTypes.number)
 
 ## Development

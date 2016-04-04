@@ -22,6 +22,7 @@ export default class BarChartRangeSelector extends React.Component {
     rangeFormat: React.PropTypes.func.isRequired,
     onMouseOver: React.PropTypes.func,
     onMouseLeave: React.PropTypes.func,
+    className: React.PropTypes.string,
     incompleteDataIndices: React.PropTypes.arrayOf(React.PropTypes.number)
   }
 
@@ -38,6 +39,7 @@ export default class BarChartRangeSelector extends React.Component {
     xTickFormat: d3.format('n'),
     yTickFormat: d3.format('s'),
     rangeFormat: d => d,
+    className: 'bar-chart-range-selector',
     incompleteDataIndices: []
   }
 
@@ -435,7 +437,7 @@ export default class BarChartRangeSelector extends React.Component {
     const additionalLeftPadding = Math.floor((fullWidth - contentWidth) / 2);
 
     return (
-      <svg className={styles.chart}
+      <svg className={styles.chart + ' ' + this.props.className}
         height={this.props.height}
         width={this.props.width}>
         <defs>
@@ -447,12 +449,12 @@ export default class BarChartRangeSelector extends React.Component {
           </pattern>
         </defs>
         <g transform={`translate(${additionalLeftPadding + margin.left}, ${margin.top})`}>
-          <rect className={styles.background}
+          <rect className={styles.background + ' background'}
             width={contentWidth} height={contentHeight} />
-          <g ref="xAxis" className={`x ${styles.axis}`}
+          <g ref="xAxis" className={`x axis ${styles.axis}`}
             transform={`translate(0,${contentHeight})`} />
-          <g ref="yAxis" className={`y ${styles.axis}`} />
-          <g ref="brush" className={styles.brush} />
+          <g ref="yAxis" className={`y axis ${styles.axis}`} />
+          <g ref="brush" className={styles.brush + ' brush'} />
           {this.getRangeLabels()}
           {this.getBars()}
         </g>

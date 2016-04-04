@@ -48,7 +48,7 @@ export default class Bar extends React.Component {
 
 
   render() {
-    let classes = styles.bar;
+    let classes = styles.bar + ' bar';
     if (this.props.selected) {
       classes += ' ' + styles.selected;
     }
