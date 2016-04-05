@@ -11,24 +11,7 @@ export default class Bar extends React.Component {
     width: React.PropTypes.number.isRequired,
     scale: React.PropTypes.func.isRequired,
     fill: React.PropTypes.string.isRequired,
-    selected: React.PropTypes.bool
-  }
-
-
-  updateHeight() {
-    const scale = this.props.scale;
-    const topY = scale(this.props.y1);
-    const bottomY = scale(this.props.y0);
-
-    d3.select(this.refs.bar.getDOMNode())
-      .transition().duration(250)
-      .attr('y', topY)
-      .attr('height', bottomY - topY);
-  }
-
-
-  componentDidUpdate(_prevProps, _prevState) {
-    this.updateHeight();
+    selected: React.PropTypes.bool,
   }
 
 
@@ -47,18 +30,36 @@ export default class Bar extends React.Component {
   }
 
 
+  componentDidUpdate(_prevProps, _prevState) {
+    this.updateHeight();
+  }
+
+
+  updateHeight() {
+    const scale = this.props.scale;
+    const topY = scale(this.props.y1);
+    const bottomY = scale(this.props.y0);
+
+    d3.select(this.refs.bar.getDOMNode())
+      .transition().duration(250)
+      .attr('y', topY)
+      .attr('height', bottomY - topY);
+  }
+
+
   render() {
     let classes = styles.bar;
     if (this.props.selected) {
-      classes += ' ' + styles.selected;
+      classes += ` ${styles.selected}`;
     }
 
     return (
       <rect
-        ref='bar'
+        ref="bar"
         className={classes}
         width={this.props.width}
-        fill={this.props.fill} />
+        fill={this.props.fill}
+      />
     );
   }
 
