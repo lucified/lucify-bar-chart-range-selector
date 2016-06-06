@@ -40,7 +40,7 @@ export default class Bar extends React.Component {
     const topY = scale(this.props.y1);
     const bottomY = scale(this.props.y0);
 
-    d3.select(this.refs.bar.getDOMNode())
+    d3.select(this.refs.bar)
       .transition().duration(250)
       .attr('y', topY)
       .attr('height', bottomY - topY);

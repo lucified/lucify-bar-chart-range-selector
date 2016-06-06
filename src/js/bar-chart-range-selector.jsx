@@ -256,10 +256,10 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   drawAxes() {
-    d3.select(this.refs.xAxis.getDOMNode())
+    d3.select(this.refs.xAxis)
       .call(this.getXAxis());
 
-    d3.select(this.refs.yAxis.getDOMNode())
+    d3.select(this.refs.yAxis)
       .call(this.getYAxis());
   }
 
@@ -308,7 +308,7 @@ export default class BarChartRangeSelector extends React.Component {
       .on('brushend', this.brushEnd.bind(this))
       .on('brush', this.brushed.bind(this));
 
-    d3.select(this.refs.brush.getDOMNode())
+    d3.select(this.refs.brush)
       .call(this.brush)
       .selectAll('rect')
         .attr('height', contentHeight + 5)
@@ -317,7 +317,7 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   brushStart() {
-    d3.select(this.refs.xAxis.getDOMNode())
+    d3.select(this.refs.xAxis)
       .selectAll('text')
       .classed(styles.hide, true);
     this.setState({ brushing: true });
@@ -325,7 +325,7 @@ export default class BarChartRangeSelector extends React.Component {
 
 
   brushEnd() {
-    d3.select(this.refs.xAxis.getDOMNode())
+    d3.select(this.refs.xAxis)
       .selectAll('text')
       .classed(styles.hide, false);
     this.setState({ brushing: false });
@@ -336,7 +336,7 @@ export default class BarChartRangeSelector extends React.Component {
     this.brush
       .x(this.getXScale())
       .extent(this.getSelectedRange());
-    d3.select(this.refs.brush.getDOMNode())
+    d3.select(this.refs.brush)
       .call(this.brush);
   }
 
