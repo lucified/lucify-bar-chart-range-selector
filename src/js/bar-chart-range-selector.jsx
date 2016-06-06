@@ -229,11 +229,6 @@ export default class BarChartRangeSelector extends React.Component {
     }
 
     return data.map(d => {
-      const item = {
-        index: d.key,
-        value: d.total,
-      };
-
       const containsIncompleteData =
         this.props.incompleteDataIndices.indexOf(d.key) >= 0;
 
@@ -254,8 +249,8 @@ export default class BarChartRangeSelector extends React.Component {
           key={d.key}
           className={styles['bar-group']}
           transform={`translate(${xScale(d.key) + barPadding},0)`}
-          onMouseOver={this.handleMouseOver.bind(this, item)}
-          onMouseLeave={this.handleMouseLeave}
+          onMouseOver={this.handleMouseOver.bind(this, d)}
+          onMouseLeave={this.handleMouseLeave.bind(this, d)}
         >
           {bars}
         </g>
