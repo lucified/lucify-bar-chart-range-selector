@@ -1,4 +1,6 @@
 
+/* eslint-disable no-underscore-dangle */
+
 import React from 'react';
 import d3 from 'd3';
 import Bar from './bar.jsx';
@@ -191,12 +193,16 @@ export default class BarChartRangeSelector extends React.Component {
 
     return (
       <g className={styles['range-labels']}>
-        <text key="range-label-start" textAnchor="middle"
+        <text
+          key="range-label-start"
+          textAnchor="middle"
           transform={`translate(${xScale(range[0])},${y})`}
         >
           {this.props.rangeFormat(range[0])}
         </text>
-        <text key="range-label-end" textAnchor="middle"
+        <text
+          key="range-label-end"
+          textAnchor="middle"
           transform={`translate(${xScale(range[1])},${y})`}
         >
           {this.props.rangeFormat(range[1])}
@@ -232,7 +238,8 @@ export default class BarChartRangeSelector extends React.Component {
         this.props.incompleteDataIndices.indexOf(d.key) >= 0;
 
       const bars = d.values.map(c =>
-        <Bar key={`${d.key}-${c.key}`}
+        <Bar
+          key={`${d.key}-${c.key}`}
           width={barWidth}
           y0={c.y0}
           y1={c.y1}
@@ -243,7 +250,9 @@ export default class BarChartRangeSelector extends React.Component {
       );
 
       return (
-        <g key={d.key} className={styles['bar-group']}
+        <g
+          key={d.key}
+          className={styles['bar-group']}
           transform={`translate(${xScale(d.key) + barPadding},0)`}
           onMouseOver={this.handleMouseOver.bind(this, item)}
           onMouseLeave={this.handleMouseLeave}
@@ -442,25 +451,34 @@ export default class BarChartRangeSelector extends React.Component {
     const additionalLeftPadding = Math.floor((fullWidth - contentWidth) / 2);
 
     return (
-      <svg className={styles.chart}
+      <svg
+        className={styles.chart}
         height={this.props.height}
         width={this.props.width}
       >
         <defs>
-          <pattern id="diagonalHatch" patternUnits="userSpaceOnUse"
+          <pattern
+            id="diagonalHatch"
+            patternUnits="userSpaceOnUse"
             width={4} height={4}
           >
-            <path className="chart-missing" d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"
+            <path
+              className="chart-missing"
+              d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2"
               stroke="rgb(0, 111, 185)"
               strokeWidth={2}
             />
           </pattern>
         </defs>
         <g transform={`translate(${additionalLeftPadding + margin.left}, ${margin.top})`}>
-          <rect className={styles.background}
-            width={contentWidth} height={contentHeight}
+          <rect
+            className={styles.background}
+            width={contentWidth}
+            height={contentHeight}
           />
-          <g ref="xAxis" className={`x ${styles.axis}`}
+          <g
+            ref="xAxis"
+            className={`x ${styles.axis}`}
             transform={`translate(0,${contentHeight})`}
           />
           <g ref="yAxis" className={`y ${styles.axis}`} />
