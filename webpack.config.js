@@ -39,6 +39,7 @@ var config = {
       commonjs2: 'react',
       amd: 'react'
     },
+    'react-dom': 'react-dom',
     'd3': 'd3'
   },
   resolve: {
